@@ -3,7 +3,7 @@
 #define GREEN_LED_2 9
 
 // Group B : Always On
-#define SKIRT_BOTTOM 1
+#define SKIRT_BOTTOM 10
 #define SKIRT_BACK 8
 #define SHOULDER 3
 #define TURN_TABLE 4
@@ -68,6 +68,7 @@ void loop() {
   flashFinger(tick);
   flashPointOrange(tick);
   flashPointBlue(tick);
+  flashTable(tick);
   delay(DELAY_MS);
 }
 
@@ -103,5 +104,14 @@ void flashPointBlue(int tick) {
    digitalWrite(POINT_BLUE, HIGH);
  } else {
    digitalWrite(POINT_BLUE, LOW);
+ }
+}
+
+void flashTable(int tick) {
+  int value = tick % 5;
+  if(value > 2) {
+   digitalWrite(TURN_TABLE, HIGH);
+ } else {
+   digitalWrite(TURN_TABLE, LOW);
  }
 }
